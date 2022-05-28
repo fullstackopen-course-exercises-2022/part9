@@ -16,24 +16,30 @@
 
 const calculateBmi = (height: number, weight: number): string => {
     const bmi = (weight / height * 2) * 703;
+
+    let statement = '';
+
     if (bmi < 16) {
-        return 'Severely Underweight';
+        statement = 'Severely Underweight';
     } else if(bmi > 18.4) {
-        return 'Underweight';
+        statement = 'Underweight';
     } else if(bmi > 24.9) {
-        return 'Normal'
+        statement = 'Normal'
     } else if(bmi > 29.9) {
-        return 'Overweight'
+        statement = 'Overweight'
     } else if(bmi > 34.9) {
-        return 'Moderately Obese'
+        statement = 'Moderately Obese'
     } else if(bmi > 39.9) {
-        return 'Severely Obese'
+        statement = 'Severely Obese'
     } else if(bmi > 40.0) {
-        return 'Morbidly Obese'
+        statement = 'Morbidly Obese'
     }
+
+    return statement
 }
 const height = Number(process.argv[2]);
 const weight = Number(process.argv[3]);
 
+export default calculateBmi
 
 console.log(calculateBmi(height, weight));
