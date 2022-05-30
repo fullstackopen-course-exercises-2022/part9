@@ -8,26 +8,23 @@ interface Value {
     aTextValueExplainingTheRating: string;
 }
 
-const calculateExercises = (hours: Array<number>): Value => {
+export const calculateExercises = (hours: Array<number>, targetNumber: number): Value => {
     const theNumberOfDays = hours.length;
     const theNumberOfTrainingDays = hours.filter(hour => hour > 0).length;
-    const theOriginalTargetValue = Number(process.argv[2]);
     const theCalculatedAverageTime = hours.reduce((a, b) => a + b) / theNumberOfDays;
-    const booleanValueDescribingIfTheTargetWasReached = theCalculatedAverageTime >= theOriginalTargetValue;
-    const rating = theCalculatedAverageTime > theOriginalTargetValue ? 3 : theCalculatedAverageTime === theOriginalTargetValue ? 2 : 1;
-    const aTextValueExplainingTheRating = theCalculatedAverageTime > theOriginalTargetValue ?
-        "Good work" : theCalculatedAverageTime === theOriginalTargetValue ?
+    const booleanValueDescribingIfTheTargetWasReached = theCalculatedAverageTime >= targetNumber;
+    const rating = theCalculatedAverageTime > targetNumber ? 3 : theCalculatedAverageTime === targetNumber ? 2 : 1;
+    const aTextValueExplainingTheRating = theCalculatedAverageTime > targetNumber ?
+        "Good work" : theCalculatedAverageTime === targetNumber ?
             "Good job" : "Good, just do better next time!";
 
     return {
         theCalculatedAverageTime: theCalculatedAverageTime,
         theNumberOfDays: theNumberOfDays,
         theNumberOfTrainingDays: theNumberOfTrainingDays,
-        theOriginalTargetValue: theOriginalTargetValue,
+        theOriginalTargetValue: targetNumber,
         booleanValueDescribingIfTheTargetWasReached: booleanValueDescribingIfTheTargetWasReached,
         rating: rating,
-        aTextValueExplainingTheRating: aTextValueExplainingTheRating
+        aTextValueExplainingTheRating: aTextValueExplainingTheRating,
     };
-}
-
-console.log(calculateExercises([3, 0, 2, 4.5, 0, 3, 1]));
+};
