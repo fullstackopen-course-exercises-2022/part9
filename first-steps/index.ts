@@ -29,7 +29,7 @@ app.post('/exercises', (req, res) => {
     const { target, daily_exercises } = req.body;
 
     if(!target || !daily_exercises) {
-        res.status(400).send({ msg: 'Malformed parameters!' });
+        res.status(400).send({ msg: 'Missing parameters!' });
     } else {
         try {
             // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
@@ -37,7 +37,7 @@ app.post('/exercises', (req, res) => {
             res.send(response);
         } catch(err) {
             // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-            res.status(500).send({ msg: err });
+            res.status(500).send({ msg: 'Malformed Parameters!' });
         }
     }
 
