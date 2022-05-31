@@ -11,7 +11,7 @@ app.get('/ping', (_req: any, res: any) => {
     res.send('<h1>Pong</h1>');
 });
 
-app.use(cors())
+app.use(cors());
 
 app.use('/api/diagnoses', diagnoseRouters);
 app.use('/api/patients', patientRouters);
