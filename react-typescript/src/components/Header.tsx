@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { FC } from 'react';
 
-const Header = ({ name }: any) => {
+const Header: FC <({ name: string })> = ({ name }) => {
     return (
         <div>
             <h1>{name}</h1>
