@@ -26,8 +26,8 @@ const isDate = (date: string): boolean => {
     return Boolean(Date.parse(date));
 };
 
-const parseDateOfBirth = (dateOfBirth: any): string => {
-    if(!dateOfBirth || isDate(dateOfBirth)) {
+const parseDateOfBirth = (dateOfBirth: unknown): string => {
+    if(!dateOfBirth || !isString(dateOfBirth) || !isDate(dateOfBirth)) {
         throw new Error('Missing birthday!' + dateOfBirth);
     }
     return dateOfBirth;
