@@ -1,6 +1,6 @@
-import { IPatients } from '../types';
+// import { IPatients } from '../types';
 
-const patientsData: Array<IPatients> = [
+const patientsData = [
     {
         "id": "d2773336-f723-11e9-8f0b-362b9e155667",
         "name": "John McClane",
