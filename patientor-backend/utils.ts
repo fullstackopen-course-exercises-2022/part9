@@ -50,14 +50,13 @@ const parseSsn = (ssn: any): string => {
 type Fields = { name: unknown, dateOfBirth: unknown, ssn: unknown, gender: unknown, occupation: unknown };
 
 const toNewPatientEntry = ({ name, dateOfBirth, ssn, gender, occupation }: Fields): NewPatient => {
-    const newEntry: NewPatient = {
+    return {
         name: parseName(name),
         dateOfBirth: parseDateOfBirth(dateOfBirth),
         ssn: parseSsn(ssn),
         gender: parseGender(gender),
-        occupation: parseOccupation(occupation)
+        occupation: parseOccupation(occupation), entries: []
     };
-    return newEntry;
 };
 
 export default toNewPatientEntry;
