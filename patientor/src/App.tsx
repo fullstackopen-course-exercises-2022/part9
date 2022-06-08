@@ -4,13 +4,12 @@ import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 import { Button, Divider, Container } from "@material-ui/core";
 
 import { apiBaseUrl } from "./constants";
-import { useStateValue } from "./state";
+import { useStateValue, setPatientList } from "./state";
 import { Patient } from "./types";
 
 import PatientListPage from "./PatientListPage";
 import PatientPage from './PatientPage';
 import { Typography } from "@material-ui/core";
-import { setPatientList } from './state';
 
 const App = () => {
   const [, dispatch] = useStateValue();

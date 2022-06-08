@@ -43,7 +43,6 @@ const PatientListPage = () => {
       }
     }
   };
-
   return (
     <div className="App">
       <Box>
