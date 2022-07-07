@@ -41,7 +41,7 @@ export const reducer = (state: State, action: Action): State => {
         ...state,
         diagnosis: {
           ...action.payload.reduce(
-              (memo, diagnosis) => ({ ...memo, [diagnosis.name]: diagnosis }),
+              (memo, diagnosis) => ({ ...memo, [diagnosis.code]: diagnosis }),
               {}
           ),
           ...state.diagnosis

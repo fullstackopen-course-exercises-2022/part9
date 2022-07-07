@@ -61,7 +61,7 @@ const PatientPage: FC = () => {
                             <div>
                                 <h3>Diagnosis</h3>
                                 {entry.diagnosisCodes.map((code) => (
-                                    <li key={code}>{code} {diagnosis[code] && diagnosis[code]?.name}</li>
+                                    <li key={code}>{code} {diagnosis[code]?.name ?? 'invalid code'}</li>
                                 ))}
                             </div>
                         )}

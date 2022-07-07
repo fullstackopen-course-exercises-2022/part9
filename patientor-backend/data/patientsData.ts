@@ -1,5 +1,5 @@
 import { Gender, IPatients } from '../types';
-import toNewPatientEntry from '../utils';
+import { toNewPatientEntry } from '../utils';
 
 const patientsData: Array<IPatients> = [
     {

@@ -26,11 +26,11 @@ const isDate = (date: string): boolean => {
     return Boolean(Date.parse(date));
 };
 
-const parseDateOfBirth = (dateOfBirth: unknown): string => {
-    if(!dateOfBirth || !isString(dateOfBirth) || !isDate(dateOfBirth)) {
-        throw new Error('Missing birthday!' + dateOfBirth);
+const parseDate = (date: unknown): string => {
+    if(!date || !isString(date) || !isDate(date)) {
+        throw new Error('Missing birthday!' + date);
     }
-    return dateOfBirth;
+    return date;
 };
 
 const parseOccupation = (occupation: any): string => {
@@ -40,6 +40,22 @@ const parseOccupation = (occupation: any): string => {
     return occupation;
 };
 
+const parseSpecialist = (specialist: any): string => {
+    if(!specialist || !isString(specialist)) {
+        throw new Error('Please a Specialist!');
+    }
+
+    return specialist;
+}
+
+const parseDiagnosisCodes = (diagnosisCodes: any): string => {
+    if(!diagnosisCodes || !isString(diagnosisCodes)) {
+        throw new Error('Add diagnosis code!');
+    }
+
+    return diagnosisCodes
+}
+
 const parseSsn = (ssn: any): string => {
     if(!ssn || !isString(ssn)) {
         throw new Error('Missing Social Security Number');
@@ -47,16 +63,45 @@ const parseSsn = (ssn: any): string => {
     return ssn;
 };
 
+const parseDescription = (description: any): string => {
+    if(!description || !isString(description)) {
+        throw new Error('Add a description!')
+    }
+
+    return description
+}
+
 type Fields = { name: unknown, dateOfBirth: unknown, ssn: unknown, gender: unknown, occupation: unknown };
 
-const toNewPatientEntry = ({ name, dateOfBirth, ssn, gender, occupation }: Fields): NewPatient => {
+export const toNewPatientEntry = ({ name, dateOfBirth, ssn, gender, occupation }: Fields): NewPatient => {
     return {
         name: parseName(name),
-        dateOfBirth: parseDateOfBirth(dateOfBirth),
+        dateOfBirth: parseDate(dateOfBirth),
         ssn: parseSsn(ssn),
         gender: parseGender(gender),
-        occupation: parseOccupation(occupation), entries: []
+        occupation: parseOccupation(occupation),
+        entries: []
     };
 };
 
-export default toNewPatientEntry;
+type EntryFields = { description: unknown, date: unknown, specialist: unknown, diagnosisCodes: unknown }
+
+export const toNewEntry = ({ description, date, specialist, diagnosisCodes }: EntryFields, /* object: Entry */) => {
+    // let types = ''
+    // switch(object.type) {
+    //     case 'Hospital':
+    //         return {};
+    //     case 'HealthCheck':
+    //         return {};
+    //     case 'OccupationalHealthcare':
+    //         return {};
+    // }
+
+    return {
+        description: parseDescription(description),
+        date: parseDate(date),
+        specialist: parseSpecialist(specialist),
+        diagnosisCodes: parseDiagnosisCodes(diagnosisCodes)
+    };
+}
+
